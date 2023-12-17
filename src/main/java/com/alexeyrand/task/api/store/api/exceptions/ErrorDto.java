@@ -1,0 +1,22 @@
+package com.alexeyrand.task.api.store.api.exceptions;
+
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+/**
+ * Описание ошибки
+ */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
+public class ErrorDto {
+    String error;
+
+    @JsonProperty("error_description")
+    String errorDescription;
+
+}
