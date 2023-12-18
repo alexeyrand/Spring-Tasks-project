@@ -1,6 +1,5 @@
 package com.alexeyrand.task.api.store.api.exceptions;
 
-
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -19,23 +18,25 @@ import java.util.Map;
 @Controller
 public class CustomErrorController implements ErrorController {
 
-    private static final String PATH = "/errors";
+    private static final String PATH = "/error";
+
     ErrorAttributes errorAttributes;
 
     @RequestMapping(CustomErrorController.PATH)
     public ResponseEntity<ErrorDto> error(WebRequest webRequest) {
+
         Map<String, Object> attributes = errorAttributes.getErrorAttributes(
-                webRequest, ErrorAttributeOptions.of(ErrorAttributeOptions.Include.EXCEPTION, ErrorAttributeOptions.Include.MESSAGE)
+                webRequest,
+                ErrorAttributeOptions.of(ErrorAttributeOptions.Include.EXCEPTION, ErrorAttributeOptions.Include.MESSAGE)
         );
 
-        // Генерируется исключение и возвращается с нужным статусом
         return ResponseEntity
                 .status((Integer) attributes.get("status"))
                 .body(ErrorDto
                         .builder()
                         .error((String) attributes.get("error"))
                         .errorDescription((String) attributes.get("message"))
-                        .build());
+                        .build()
+                );
     }
-
 }

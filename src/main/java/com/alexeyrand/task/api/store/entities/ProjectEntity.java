@@ -19,7 +19,7 @@ import java.util.List;
 public class ProjectEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     Long id;
 
     @Column(unique = true)
