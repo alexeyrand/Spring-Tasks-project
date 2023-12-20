@@ -47,7 +47,6 @@ public class ProjectController {
 
     @PostMapping(CREATE_PROJECT)
     public ProjectDto createProject(@RequestParam String name) {
-        System.out.println("тут");
         if (name.trim().isEmpty()) {
             throw new BadRequestException("Name can't be empty");
         }
@@ -81,7 +80,7 @@ public class ProjectController {
                 .orElseThrow(() ->
                          new NotFoundException(
                                 String.format(
-                                        "Project with \"%s\" already exists.", projectId))
+                                        "Project with \"%s\" already not exists.", projectId))
                 );
 
         projectRepository
