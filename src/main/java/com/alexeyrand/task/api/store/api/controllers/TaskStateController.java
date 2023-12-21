@@ -29,8 +29,8 @@ import java.util.stream.Collectors;
 @RestController
 public class TaskStateController {
 
-    TaskStateRepository taskStateRepository;
-    TaskStateDtoFactory taskStateDtoFactory;
+    final TaskStateRepository taskStateRepository;
+    final TaskStateDtoFactory taskStateDtoFactory;
     final ControllerHelper controllerHelper;
 
     public static final String GET_TASK_STATES = "/api/projects/{project_id}/task-states";

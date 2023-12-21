@@ -25,6 +25,9 @@ public class TaskEntity {
     private Instant createdAt = Instant.now();
 
     private String description;
+
+    @ManyToOne
+    TaskStateEntity taskState;
 }
 
 
